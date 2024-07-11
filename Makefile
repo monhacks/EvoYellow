@@ -7,7 +7,11 @@ pcm      := $(PYTHON) extras/pokemontools/pcm.py pcm
 pic      := $(PYTHON) extras/pokemontools/pic.py compress
 includes := $(PYTHON) extras/pokemontools/scan_includes.py
 
+ifneq ($(wildcard rgbds/*),)
+RGBDS ?= rgbds
+else
 RGBDS ?= 
+endif
 RGBASM ?= $(RGBDS)/rgbasm
 RGBFIX ?= $(RGBDS)/rgbfix
 RGBGFX ?= $(RGBDS)/rgbgfx
