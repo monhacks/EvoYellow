@@ -8,7 +8,7 @@ db FAIRY ; species type 1
 db DARK ; species type 2
 db 19 ; catch rate
 db 69 ; base exp yield
-INCBIN "pic/ymon/Granbull.pic",0,1 ; 55, sprite dimensions
+INCBIN "pic/ymon/granbull.pic",0,1 ; 55, sprite dimensions
 dw GranbullPicFront
 dw GranbullPicBack
 ; attacks known at lvl 0
