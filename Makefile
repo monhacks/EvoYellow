@@ -41,7 +41,7 @@ compare: yellow
 
 clean:
 	rm -f $(rom) $(objs) $(rom:.gbc=.sym)
-	find . \( -iname '*.1bpp' -o -iname '*.2bpp' -o -iname '*.pic' -o -iname '*.pcm' \) -exec rm {} +
+	find . \( -iname '*.1bpp' -o -iname '*.2bpp' -o -iname '*.pic' -o \) -exec rm {} +
 
 %.asm: ;
 $(objs): %.o: %.asm $$(%_dep)
