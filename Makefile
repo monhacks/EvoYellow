@@ -7,6 +7,16 @@ pcm      := $(PYTHON) extras/pokemontools/pcm.py pcm
 pic      := $(PYTHON) extras/pokemontools/pic.py compress
 includes := $(PYTHON) extras/pokemontools/scan_includes.py
 
+ifneq ($(wildcard rgbds/*),)
+RGBDS ?= rgbds
+else
+RGBDS ?= 
+endif
+RGBASM ?= $(RGBDS)/rgbasm
+RGBFIX ?= $(RGBDS)/rgbfix
+RGBGFX ?= $(RGBDS)/rgbgfx
+RGBLNK ?= $(RGBDS)/rgblin
+
 objs := \
 	audio.o \
 	main.o \
@@ -39,13 +49,13 @@ clean:
 
 %.asm: ;
 $(objs): %.o: %.asm $$(%_dep)
-	rgbasm -h -o $@ $*.asm
+	$(RGBASM) -h -o $@ $*.asm
 
 opts = -cjsv -k 01 -l 0x33 -m 0x1b -p 0 -r 03 -t "POKEMON YELLOW"
 
 $(rom): $(objs)
-	rgblink -n $*.sym -o $@ $^
-	rgbfix $(opts) $@
+	$(RGBLNK) -n $*.sym -o $@ $^
+	$(RGBFIX) $(opts) $@
 
 %.png:  ;
 %.2bpp: %.png  ; @$(2bpp) $<
