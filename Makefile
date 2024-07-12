@@ -15,7 +15,7 @@ endif
 RGBASM ?= $(RGBDS)/rgbasm
 RGBFIX ?= $(RGBDS)/rgbfix
 RGBGFX ?= $(RGBDS)/rgbgfx
-RGBLNK ?= $(RGBDS)/rgblin
+RGBLNK ?= $(RGBDS)/rgblink
 
 objs := \
 	audio.o \
